@@ -1,55 +1,52 @@
-// portfoio-frontend/pages/index.js
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
 
 export default function Home() {
   const [portfolio, setPortfolio] = useState(null);
 
   useEffect(() => {
-    // Replace with your Render backend URL
-    fetch("https://ernestmanyama.onrender.com/api/portfolio")
+    fetch(process.env.NEXT_PUBLIC_API_URL)
       .then(res => res.json())
       .then(data => setPortfolio(data))
       .catch(err => console.error("Error fetching portfolio:", err));
   }, []);
 
-  if (!portfolio) return <Layout><p>Loading...</p></Layout>;
+  if (!portfolio) return <p>Loading...</p>;
 
   return (
-    <Layout>
-      <section id="about">
-        <h1>{portfolio.name}</h1>
-        <p>{portfolio.about}</p>
-      </section>
+    <div>
+      <h1>{portfolio.name}</h1>
+      <p>{portfolio.about}</p>
 
-      <section id="skills">
+      <section>
         <h2>Skills</h2>
         <ul>
-          {portfolio.skills.map(skill => (
-            <li key={skill}>{skill}</li>
-          ))}
+          {Array.isArray(portfolio.skills)
+            ? portfolio.skills.map(skill => <li key={skill}>{skill}</li>)
+            : <li>No skills listed</li>}
         </ul>
       </section>
 
-      <section id="projects">
+      <section>
         <h2>Projects</h2>
-        {portfolio.projects.map(project => (
-          <div key={project.title} style={{ marginBottom: "20px" }}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noreferrer">
-              View Project
-            </a>
-          </div>
-        ))}
+        {Array.isArray(portfolio.projects)
+          ? portfolio.projects.map(project => (
+              <div key={project.title}>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  View Project
+                </a>
+              </div>
+            ))
+          : <p>No projects available</p>}
       </section>
 
-      <section id="contact">
+      <section>
         <h2>Contact</h2>
         <p>Email: <a href={`mailto:${portfolio.contact.email}`}>{portfolio.contact.email}</a></p>
-        <p><a href={portfolio.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
-        <p><a href={portfolio.contact.github} target="_blank" rel="noreferrer">GitHub</a></p>
+        <p>GitHub: <a href={portfolio.contact.github} target="_blank" rel="noreferrer">{portfolio.contact.github}</a></p>
+        <p>LinkedIn: <a href={portfolio.contact.linkedin} target="_blank" rel="noreferrer">{portfolio.contact.linkedin}</a></p>
       </section>
-    </Layout>
+    </div>
   );
 }
