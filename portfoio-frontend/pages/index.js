@@ -7,7 +7,7 @@ export default function Home() {
 
   useEffect(() => {
     // Replace with your Render backend URL
-    fetch("https://ernest-portfolio.onrender.com/api/portfolio")
+    fetch("https://ernestmanyama.onrender.com/api/portfolio")
       .then(res => res.json())
       .then(data => setPortfolio(data))
       .catch(err => console.error("Error fetching portfolio:", err));
