@@ -5,77 +5,49 @@ export default function Home() {
   const [portfolio, setPortfolio] = useState(null);
 
   useEffect(() => {
-    async function fetchPortfolio() {
-      try {
-        const res = await fetch("https://ernestmanyama.onrender.com/api/portfolio");
-        const data = await res.json();
-        setPortfolio(data);
-      } catch (err) {
-        console.error("Error fetching portfolio:", err);
-      }
-    }
-    fetchPortfolio();
+    fetch("https://ernestmanyama.onrender.com/api/portfolio")
+      .then(res => res.json())
+      .then(data => setPortfolio(data))
+      .catch(err => console.error("Fetch error:", err));
   }, []);
 
-  if (!portfolio) {
-    return <div className="p-8">Loading portfolio...</div>;
-  }
+  if (!portfolio) return <p style={{ textAlign: "center", marginTop: "2rem" }}>Loading...</p>;
 
   return (
-    <div className="bg-gray-100 text-black min-h-screen flex flex-col">
-      <header className="p-6 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">{portfolio.name}</h1>
+    <div style={{ fontFamily: "Segoe UI, Arial, sans-serif", backgroundColor: "white", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <header style={{ backgroundColor: "silver", padding: "2rem", textAlign: "center" }}>
+        <h1>{portfolio.name}</h1>
+        <h2 style={{ fontWeight: "normal" }}>{portfolio.about}</h2>
       </header>
 
-      <main className="flex-grow p-8 space-y-8">
-        <section>
-          <h2 className="text-xl font-semibold">About</h2>
-          <p>{portfolio.about}</p>
-        </section>
+      <main style={{ flex: "1", padding: "2rem", maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.5rem" }}>
+        <div style={{ backgroundColor: "#111", color: "gold", padding: "1.5rem", borderRadius: "8px" }}>
+          <h3 style={{ color: "cyan" }}>Skills</h3>
+          <ul>{portfolio.skills.map((s, i) => <li key={i}>{s}</li>)}</ul>
+        </div>
 
-        <section>
-          <h2 className="text-xl font-semibold">Skills</h2>
-          <ul className="list-disc list-inside">
-            {portfolio.skills.map((skill, idx) => (
-              <li key={idx}>{skill}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Projects</h2>
-          <div className="space-y-4">
-            {portfolio.projects.map((proj, idx) => (
-              <div key={idx} className="p-4 border rounded shadow-sm bg-white">
-                <h3 className="text-lg font-bold">{proj.title}</h3>
-                <p>{proj.description}</p>
-                <a
-                  href={proj.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  View Project
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Contact</h2>
+        <div style={{ backgroundColor: "#111", color: "gold", padding: "1.5rem", borderRadius: "8px" }}>
+          <h3 style={{ color: "cyan" }}>Projects</h3>
           <ul>
-            <li>Email: <a href={`mailto:${portfolio.contact.email}`} className="text-blue-600">{portfolio.contact.email}</a></li>
-            <li>GitHub: <a href={portfolio.contact.github} target="_blank" rel="noopener noreferrer" className="text-blue-600">GitHub Profile</a></li>
-            <li>LinkedIn: <a href={portfolio.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600">LinkedIn Profile</a></li>
+            {portfolio.projects.map((p, i) => (
+              <li key={i}>
+                <strong>{p.title}</strong>: {p.description}{" "}
+                <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ color: "cyan" }}>View</a>
+              </li>
+            ))}
           </ul>
-        </section>
+        </div>
+
+        <div style={{ backgroundColor: "#111", color: "gold", padding: "1.5rem", borderRadius: "8px" }}>
+          <h3 style={{ color: "white" }}>Contact</h3>
+          <p>Email: {portfolio.contact.email}</p>
+          <p>GitHub: <a href={portfolio.contact.github} target="_blank" rel="noopener noreferrer" style={{ color: "cyan" }}>Profile</a></p>
+          <p>LinkedIn: <a href={portfolio.contact.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: "cyan" }}>Profile</a></p>
+        </div>
       </main>
 
-      <footer className="bg-gray-200 text-center p-4">
-        <p className="text-sm">
-          © {new Date().getFullYear()} {portfolio.name}. All rights reserved.
-        </p>
+      <footer style={{ backgroundColor: "#333", color: "gold", textAlign: "center", padding: "1rem" }}>
+        <p>© {new Date().getFullYear()} {portfolio.name} Portfolio | All Rights Reserved</p>
       </footer>
     </div>
   );
