@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # allow requests from your Next.js frontend
 
 @app.route("/api/portfolio", methods=["GET"])
 def portfolio():
@@ -30,4 +32,3 @@ def portfolio():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
