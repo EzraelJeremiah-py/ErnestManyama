@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [portfolio, setPortfolio] = useState(null);
+  const [openProject, setOpenProject] = useState(null);
 
   useEffect(() => {
     fetch("https://ernestmanyama.onrender.com/api/portfolio")
@@ -31,14 +32,21 @@ export default function Home() {
           <p className="text-gray-700">{portfolio.skills.join(" • ")}</p>
         </section>
 
-        {/* Projects */}
+        {/* Projects with dropdown */}
         <section>
           <h2 className="text-2xl font-semibold border-b-2 border-blue-900 pb-2 mb-4">Projects</h2>
-          <div className="space-y-6">
+          <div className="space-y-4">
             {portfolio.projects.map((proj, i) => (
-              <div key={i}>
-                <h3 className="text-xl font-bold text-blue-900">{proj.title}</h3>
-                <p className="text-gray-700">{proj.description}</p>
+              <div key={i} className="border-b pb-2">
+                <button
+                  onClick={() => setOpenProject(openProject === i ? null : i)}
+                  className="w-full text-left text-xl font-bold text-blue-900 focus:outline-none"
+                >
+                  {proj.title}
+                </button>
+                {openProject === i && (
+                  <p className="mt-2 text-gray-700">{proj.description}</p>
+                )}
               </div>
             ))}
           </div>
