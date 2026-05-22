@@ -17,35 +17,35 @@ export default function Home() {
   }
 
   return (
-    <div className="font-sans bg-gray-50 min-h-screen flex flex-col">
+    <div className="font-sans bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen flex flex-col">
       {/* Header */}
-      <header className="bg-blue-900 text-white py-10 text-center shadow">
-        <h1 className="text-3xl font-bold">{portfolio.name}</h1>
-        <p className="mt-2 text-lg">{portfolio.about}</p>
+      <header className="bg-blue-800 text-white py-12 text-center shadow-lg">
+        <h1 className="text-4xl font-bold tracking-wide">{portfolio.name}</h1>
+        <p className="mt-3 text-lg max-w-2xl mx-auto">{portfolio.about}</p>
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow max-w-4xl mx-auto px-6 py-12 space-y-12">
+      <main className="flex-grow max-w-5xl mx-auto px-8 py-14 space-y-14">
         {/* Skills */}
         <section>
-          <h2 className="text-2xl font-semibold border-b-2 border-blue-900 pb-2 mb-4">Skills</h2>
-          <p className="text-gray-700">{portfolio.skills.join(" • ")}</p>
+          <h2 className="text-2xl font-semibold text-blue-800 border-b-2 border-blue-800 pb-2 mb-6">Skills</h2>
+          <p className="text-gray-700 text-lg">{portfolio.skills.join(" • ")}</p>
         </section>
 
         {/* Projects with dropdown */}
         <section>
-          <h2 className="text-2xl font-semibold border-b-2 border-blue-900 pb-2 mb-4">Projects</h2>
-          <div className="space-y-4">
+          <h2 className="text-2xl font-semibold text-blue-800 border-b-2 border-blue-800 pb-2 mb-6">Projects</h2>
+          <div className="space-y-6">
             {portfolio.projects.map((proj, i) => (
-              <div key={i} className="border-b pb-2">
+              <div key={i} className="bg-white rounded-lg shadow hover:shadow-md transition p-4">
                 <button
                   onClick={() => setOpenProject(openProject === i ? null : i)}
-                  className="w-full text-left text-xl font-bold text-blue-900 focus:outline-none"
+                  className="w-full text-left text-xl font-bold text-blue-700 focus:outline-none"
                 >
                   {proj.title}
                 </button>
                 {openProject === i && (
-                  <p className="mt-2 text-gray-700">{proj.description}</p>
+                  <p className="mt-3 text-gray-700">{proj.description}</p>
                 )}
               </div>
             ))}
@@ -54,8 +54,8 @@ export default function Home() {
 
         {/* Contact */}
         <section>
-          <h2 className="text-2xl font-semibold border-b-2 border-blue-900 pb-2 mb-4">Contact</h2>
-          <ul className="space-y-2 text-gray-700">
+          <h2 className="text-2xl font-semibold text-blue-800 border-b-2 border-blue-800 pb-2 mb-6">Contact</h2>
+          <ul className="space-y-2 text-gray-700 text-lg">
             <li>Email: {portfolio.contact.email}</li>
             <li>GitHub: {portfolio.contact.github}</li>
             <li>LinkedIn: {portfolio.contact.linkedin}</li>
@@ -64,8 +64,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-blue-900 text-white text-center py-4">
-        <p>© {new Date().getFullYear()} {portfolio.name} Portfolio | All Rights Reserved</p>
+      <footer className="bg-blue-800 text-white text-center py-6 mt-10">
+        <p className="text-sm">© {new Date().getFullYear()} {portfolio.name} Portfolio | All Rights Reserved</p>
       </footer>
     </div>
   );
