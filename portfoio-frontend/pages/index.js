@@ -39,9 +39,28 @@ export default function Home() {
         {/* Skills */}
         <section className="mb-4">
           <h3>Skills</h3>
-          {portfolio.skills.map((skill, i) => (
-            <span key={i} className="badge bg-success me-2">{skill}</span>
-          ))}
+          <div className="row">
+            {portfolio.skills.map((skill, i) => (
+              <div key={i} className="col-md-6 mb-3">
+                <div className="card shadow-sm border-0">
+                  <div className="card-body">
+                    <h5 className="card-title">{skill.name}</h5>
+                    <p className="card-text">{skill.details}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Qualifications */}
+        <section className="mb-4">
+          <h3>Qualifications</h3>
+          <ul className="list-group">
+            {portfolio.qualifications.map((q, i) => (
+              <li key={i} className="list-group-item">{q}</li>
+            ))}
+          </ul>
         </section>
 
         {/* Projects */}
