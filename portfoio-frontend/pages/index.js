@@ -5,7 +5,7 @@ export default function Home() {
   const [portfolio, setPortfolio] = useState(null);
 
   useEffect(() => {
-    fetch("https://ernest-manyama-portifolio.onrender.com/api/portfolio")
+    fetch("https://ernestmanyama.onrender.com/api/portfolio")
       .then(res => res.json())
       .then(data => setPortfolio(data))
       .catch(err => console.error("Error fetching portfolio:", err));
