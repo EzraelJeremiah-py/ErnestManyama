@@ -9,7 +9,28 @@ def portfolio():
     data = {
         "name": "Ernest Manyama",
         "about": "Software developer passionate about data-driven solutions.",
-        "skills": ["Python", "Flask", "React", "SQL"],
+        "skills": [
+            {
+                "name": "Python",
+                "details": "Versatile programming language used for backend development, data analysis, automation, and machine learning projects."
+            },
+            {
+                "name": "Flask",
+                "details": "Lightweight Python web framework ideal for building REST APIs and small web applications, powering your portfolio backend."
+            },
+            {
+                "name": "React",
+                "details": "Modern JavaScript library for building interactive user interfaces, used in your Next.js frontend to display portfolio data."
+            },
+            {
+                "name": "SQL",
+                "details": "Structured Query Language for managing and analyzing relational databases, essential for handling data-driven solutions."
+            }
+        ]
+,
+        "qualifications":"[
+        "Data Science"
+        ]
         "projects": [
             {
                 "title": "E-commerce Analytics",
