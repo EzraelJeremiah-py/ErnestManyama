@@ -23,7 +23,8 @@ def portfolio():
             }
         ],
         "contact": {
-            "email": "ernest@example.com",
+            "email": "ernestmanyama93@gmail.com",
+            "Phone Number":"0686558704",
             "linkedin": "https://linkedin.com/in/ernestmanyama",
             "github": "https://github.com/ErnestManyama"
         }
