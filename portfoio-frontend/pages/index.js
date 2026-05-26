@@ -24,7 +24,6 @@ export default function Home() {
           backgroundPosition: "center"
         }}
       >
-        {/* Gradient overlay */}
         <div
           className="p-4 rounded"
           style={{
@@ -51,7 +50,7 @@ export default function Home() {
           <div className="row">
             {portfolio.projects.map((p, i) => (
               <div key={i} className="col-md-6 mb-3">
-                <div className="card shadow-sm h-100">
+                <div className="card shadow-sm h-100 border-0">
                   <div className="card-body">
                     <h5 className="card-title">{p.title}</h5>
                     <p className="card-text">{p.description}</p>
@@ -74,6 +73,11 @@ export default function Home() {
           <p>💻 <a href={portfolio.contact.github} target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </section>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-dark text-white text-center py-3 mt-5">
+        <small>© {new Date().getFullYear()} {portfolio.name} Portfolio</small>
+      </footer>
     </div>
   );
 }
