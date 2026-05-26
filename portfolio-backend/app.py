@@ -28,7 +28,7 @@ def portfolio():
             }
         ]
 ,
-        "qualifications":"[
+        "qualifications":[
         "Data Science"
         ]
         "projects": [
