@@ -31,7 +31,7 @@ def portfolio():
             }
         ],
         "contact": {
-            "email": "ernestmanyama93@gmail.com",
+            "email": "erenestmanyama93@gmail.com",
             "Phone Number": "0686558704",
             "linkedin": "https://linkedin.com/in/ernestmanyama",
             "github": "https://github.com/ErnestManyama"
