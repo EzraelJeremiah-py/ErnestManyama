@@ -22,18 +22,18 @@ def portfolio():
             {
                 "title": "E-commerce Analytics",
                 "description": "Analyzed customer behavior and sales trends.",
-                "link": "https://github.com/ErnestManyama/ecommerce-analytics"
+                "link": "https://github.com/ErenestManyama/ecommerce-analytics"
             },
             {
                 "title": "IoT Monitoring System",
                 "description": "Simulated IoT devices for real-time monitoring.",
-                "link": "https://github.com/ErnestManyama/iot-monitoring"
+                "link": "https://github.com/ErenestManyama/iot-monitoring"
             }
         ],
         "contact": {
             "email": "erenestmanyama93@gmail.com",
             "Phone Number": "0686558704",
-            "linkedin": "https://linkedin.com/in/ernestmanyama",
+            "linkedin": "https://linkedin.com/in/erenestmanyama",
             "github": "https://github.com/ErnestManyama"
         }
     }
