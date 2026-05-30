@@ -7,8 +7,8 @@ CORS(app)  # allow requests from your Next.js frontend
 @app.route("/api/portfolio", methods=["GET"])
 def portfolio():
     data = {
-        "name": "Ernest Manyama",
-        "about": "Software developer passionate about data-driven solutions.",
+        "name": "Erenest Manyama",
+        "about": "Software developer typically about data-driven solutions.",
         "skills": [
             {"name": "Python", "details": "Versatile programming language..."},
             {"name": "Flask", "details": "Lightweight Python web framework..."},
